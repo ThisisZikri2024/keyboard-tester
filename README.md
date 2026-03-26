@@ -32,4 +32,4 @@
 **Selamat Berlatih & Happy Typing!** 🚀🔥
 
 ---
-*Dibuat dengan ❤️ oleh [Nama/Username GitHub Kamu]*
+*Dibuat dengan ❤️ oleh [ThisIsZikri2024]*
