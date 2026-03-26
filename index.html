@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIY Keyboard Master V.1.4.0.1 - Privacy Update</title>
+    <title>DIY Keyboard Master V.1.4.0.2 - Extended Edition</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Creepster&family=Kosugi+Maru&family=JetBrains+Mono&family=Noto+Sans+JP&family=Noto+Sans+Thai&family=Noto+Sans+Lao&family=Noto+Sans+Myanmar&display=swap');
@@ -72,92 +72,72 @@
 
         .lang-selector-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 10px;
             margin-top: 20px;
         }
 
         .lang-card-btn {
-            background: white;
-            border: 3px solid var(--secondary);
-            padding: 10px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background: white; border: 3px solid var(--secondary); padding: 10px;
+            border-radius: 15px; cursor: pointer; font-weight: bold; transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center;
         }
 
         .lang-card-btn:hover { background: var(--accent); border-color: var(--primary); }
 
         .info-box {
-            background: var(--accent);
-            border: 2px solid var(--secondary);
-            border-radius: 15px;
-            padding: 15px;
-            margin: 15px 0;
-            text-align: left;
-            font-size: 0.8rem;
+            background: var(--accent); border: 2px solid var(--secondary);
+            border-radius: 15px; padding: 15px; margin: 15px 0; text-align: left; font-size: 0.8rem;
         }
 
         .btn-main {
-            background: var(--primary);
-            border: none;
-            color: white;
-            padding: 12px;
-            border-radius: 18px;
-            font-family: var(--font-head);
-            font-size: 1.1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 0px var(--secondary);
-            width: 100%;
+            background: var(--primary); border: none; color: white; padding: 12px;
+            border-radius: 18px; font-family: var(--font-head); font-size: 1.1rem;
+            cursor: pointer; box-shadow: 0 4px 0px var(--secondary); width: 100%; margin-top: 10px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
             margin-top: 10px;
         }
 
-        .btn-main:active { transform: translateY(2px); box-shadow: none; }
-
         textarea {
-            width: 100%; height: 150px; padding: 15px; border-radius: 20px;
-            border: 4px solid var(--secondary); font-family: 'JetBrains Mono', monospace;
+            width: 100%; height: 100px; padding: 15px; border-radius: 20px;
+            border: 4px solid var(--secondary); font-family: inherit;
             box-sizing: border-box; outline: none; resize: none; font-size: 1rem;
         }
 
-        .progress-container { width: 100%; height: 8px; background: #eee; border-radius: 10px; margin-bottom: 15px; overflow: hidden; }
-        .progress-bar { height: 100%; background: var(--primary); width: 100%; transition: 1s linear; }
+        #text-display {
+            background: var(--accent); padding: 15px; border-radius: 20px;
+            margin-bottom: 15px; font-weight: bold; border: 2px dashed var(--secondary);
+            text-align: left; min-height: 40px;
+        }
+
+        .progress-container { width: 100%; height: 10px; background: #eee; border-radius: 10px; margin-bottom: 15px; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--primary); width: 100%; transition: 0.3s linear; }
 
         .hidden { display: none; }
-        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        
-        .privacy-badge {
-            color: #2d6a4f;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+        .privacy-badge { color: #2d6a4f; font-weight: bold; display: flex; align-items: center; gap: 5px; }
     </style>
 </head>
-<body data-theme="kawaii">
+<body>
 
 <div class="container">
     
     <div id="screen-lang" class="card">
         <h2 style="font-family: var(--font-head);">Select Language</h2>
         <div class="lang-selector-grid">
-            <button class="lang-card-btn" onclick="selectLang('ms')"><span>🇲🇾</span>Melayu</button>
-            <button class="lang-card-btn" onclick="selectLang('en')"><span>🇬🇧</span>English (UK)</button>
-            <button class="lang-card-btn" onclick="selectLang('en_au')"><span>🇦🇺</span>English (AU)</button>
-            <button class="lang-card-btn" onclick="selectLang('id')"><span>🇮🇩</span>Indonesia</button>
-            <button class="lang-card-btn" onclick="selectLang('cn')"><span>🇨🇳</span>中文</button>
-            <button class="lang-card-btn" onclick="selectLang('in')"><span>🇮🇳</span>हिन्दी</button>
-            <button class="lang-card-btn" onclick="selectLang('de')"><span>🇩🇪</span>Deutsch</button>
-            <button class="lang-card-btn" onclick="selectLang('ph')"><span>🇵🇭</span>Filipino</button>
-            <button class="lang-card-btn" onclick="selectLang('th')"><span>🇹🇭</span>ไทย</button>
-            <button class="lang-card-btn" onclick="selectLang('la')"><span>🇱🇦</span>ລາວ</button>
-            <button class="lang-card-btn" onclick="selectLang('mm')"><span>🇲🇲</span>မြန်မာ</button>
-            <button class="lang-card-btn" onclick="selectLang('jp')"><span>🇯🇵</span>日本語</button>
+            <button class="lang-card-btn" onclick="selectLang('ms')">🇲🇾 Melayu</button>
+            <button class="lang-card-btn" onclick="selectLang('en')">🇬🇧 English</button>
+            <button class="lang-card-btn" onclick="selectLang('id')">🇮🇩 Indonesia</button>
+            <button class="lang-card-btn" onclick="selectLang('cn')">🇨🇳 中文</button>
+            <button class="lang-card-btn" onclick="selectLang('jp')">🇯🇵 日本語</button>
+            <button class="lang-card-btn" onclick="selectLang('th')">🇹🇭 ไทย</button>
+            <button class="lang-card-btn" onclick="selectLang('vn')">🇻🇳 Tiếng Việt</button>
+            <button class="lang-card-btn" onclick="selectLang('lao')">🇱🇦 ພາສາລາວ</button>
+            <button class="lang-card-btn" onclick="selectLang('mm')">🇲🇲 မြန်မာ</button>
         </div>
     </div>
 
@@ -165,9 +145,6 @@
         <h2 data-tag="title_login"></h2>
         <div class="info-box">
             <div><i class="fa-solid fa-lightbulb"></i> <strong>Tips:</strong> <span data-tag="tips_text"></span></div>
-            <hr style="opacity: 0.1; margin: 8px 0;">
-            <div><i class="fa-solid fa-triangle-exclamation"></i> <span data-tag="warning_text"></span></div>
-            <hr style="opacity: 0.1; margin: 8px 0;">
             <div class="privacy-badge"><i class="fa-solid fa-shield-halved"></i> <span data-tag="privacy_note"></span></div>
         </div>
         <input type="text" id="in-name" style="width:100%; padding:12px; border-radius:15px; border:3px solid var(--secondary); margin-bottom:15px; box-sizing: border-box;" data-placeholder="ph_name">
@@ -182,16 +159,17 @@
             <button class="btn-main" onclick="start(30)">30s</button>
             <button class="btn-main" onclick="start(60)">1m</button>
             <button class="btn-main" onclick="start(120)">2m</button>
-            <button class="btn-main" onclick="start(180)">3m</button>
-            <button class="btn-main" onclick="start(240)">4m</button>
+            <button class="btn-main" onclick="start(300)">5m</button>
+            <button class="btn-main" onclick="start(600)">10m</button>
         </div>
     </div>
 
     <div id="screen-test" class="card hidden">
-        <div class="user-tag"><span class="display-username"></span></div>
+        <div id="text-display"></div>
         <div style="display:flex; justify-content: space-around; font-weight: bold; margin-bottom: 10px;">
-            <span>S: <span id="timer">0</span></span>
-            <span>WPM: <span id="wpm">0</span></span>
+            <span>⏱️ <span id="timer">0</span>s</span>
+            <span>🚀 <span id="wpm">0</span> WPM</span>
+            <span>🎯 <span id="accuracy">100</span>%</span>
         </div>
         <div class="progress-container"><div id="p-bar" class="progress-bar"></div></div>
         <textarea id="typing-box" spellcheck="false" data-placeholder="ph_type"></textarea>
@@ -199,8 +177,7 @@
 
     <div id="screen-result" class="card hidden">
         <h2 data-tag="title_result"></h2>
-        <div class="user-tag">Player: <span class="display-username"></span></div>
-        <div id="final-stats" style="font-weight: bold; font-size: 2rem; margin: 20px 0;"></div>
+        <div id="final-stats" style="font-weight: bold; font-size: 1.5rem; margin: 20px 0;"></div>
         <button class="btn-main" onclick="location.reload()"><span data-tag="btn_retry"></span></button>
     </div>
 
@@ -208,26 +185,34 @@
 
 <script>
     const langData = {
-        ms: { title_login: "Sistem Login", tips_text: "Beli keyboard di kedai terdekat untuk lebih laju!", warning_text: "Jangan beli OEM murah, tak tahan main game!", privacy_note: "Privasi: Kami tidak kumpul data anda.", ph_name: "Nama anda...", btn_go: "Lanjut ✨", title_menu: "Pilih Masa", ph_type: "Mula menaip...", title_result: "Tamat!", btn_retry: "Semula" },
-        en: { title_login: "Login System", tips_text: "Buy a keyboard at a local store for speed!", warning_text: "Avoid cheap OEM, bad for gaming!", privacy_note: "Privacy: We don't collect your data.", ph_name: "Your name...", btn_go: "Next ✨", title_menu: "Select Time", ph_type: "Type here...", title_result: "Finished!", btn_retry: "Retry" },
-        en_au: { title_login: "G'day Mate!", tips_text: "Grab a proper keyboard for speed!", warning_text: "Don't buy cheap junk!", privacy_note: "Privacy: No data collected, mate!", ph_name: "Your name...", btn_go: "Go ✨", title_menu: "Pick a Time", ph_type: "Start typing...", title_result: "Done!", btn_retry: "Again" },
-        id: { title_login: "Sistem Login", tips_text: "Beli keyboard di toko terdekat biar cepat!", warning_text: "Jangan beli OEM murah!", privacy_note: "Privasi: Kami tidak ambil data Anda.", ph_name: "Nama kamu...", btn_go: "Lanjut ✨", title_menu: "Pilih Waktu", ph_type: "Ketik di sini...", title_result: "Selesai!", btn_retry: "Kembali" },
-        cn: { title_login: "登录系统", tips_text: "想要更快？去店里买个好键盘！", warning_text: "别买廉价OEM键盘！", privacy_note: "隐私：我们不会收集您的数据。", ph_name: "名字...", btn_go: "进入 ✨", title_menu: "选择时间", ph_type: "在此输入...", title_result: "完成！", btn_retry: "重试" },
-        in: { title_login: "लॉगिन", tips_text: "तेज़ टाइपिंग के लिए कीबोर्ड खरीदें!", warning_text: "सस्ते OEM से बचें!", privacy_note: "गोपनीयता: हम डेटा एकत्र नहीं करते।", ph_name: "आपका नाम...", btn_go: "आगे ✨", title_menu: "समय चुनें", ph_type: "यहाँ लिखें...", title_result: "समाप्त!", btn_retry: "फिर से" },
-        de: { title_login: "Anmeldung", tips_text: "Kauf eine Tastatur im Laden!", warning_text: "Kein billiges OEM kaufen!", privacy_note: "Datenschutz: Keine Datenspeicherung.", ph_name: "Dein Name...", btn_go: "Weiter ✨", title_menu: "Zeit wählen", ph_type: "Hier tippen...", title_result: "Fertig!", btn_retry: "Nochmal" },
-        ph: { title_login: "Login", tips_text: "Bumili ng keyboard sa malapit!", warning_text: "Iwasan ang murang OEM!", privacy_note: "Privacy: Hindi kami nag-iipon ng data.", ph_name: "Pangalan...", btn_go: "Simulan ✨", title_menu: "Pumili ng Oras", ph_type: "Mag-type dito...", title_result: "Tapos!", btn_retry: "Ulitin" },
-        th: { title_login: "เข้าสู่ระบบ", tips_text: "ซื้อคีย์บอร์ดที่ร้านใกล้บ้าน!", warning_text: "อย่าซื้อ OEM ราคาถูก!", privacy_note: "ความเป็นส่วนตัว: เราไม่เก็บข้อมูล", ph_name: "ชื่อของคุณ...", btn_go: "ถัดไป ✨", title_menu: "เลือกเวลา", ph_type: "พิมพ์ที่นี่...", title_result: "เสร็จสิ้น!", btn_retry: "ลองใหม่" },
-        la: { title_login: "ເຂົ້າສູ່ລະບົບ", tips_text: "ຊື້ຄີບອດຢູ່ຮ້ານໃກ້ບ້ານ!", warning_text: "ຢ່າຊື້ OEM ລາຄາຖືກ!", privacy_note: "ຄວາມເປັນສ່ວນຕົວ: ພວກເຮົາບໍ່ເກັບກຳຂໍ້ມູນ", ph_name: "ຊື່ຂອງທ່ານ...", btn_go: "ເລີ່ມ ✨", title_menu: "ເລືອກເວລາ", ph_type: "ພິມຢູ່ນີ້...", title_result: "ສຳເລັດ!", btn_retry: "ລອງໃໝ່" },
-        mm: { title_login: "အကောင့်ဝင်ပါ", tips_text: "ဆိုင်မှာကီးဘုတ်အကောင်းစားဝယ်ပါ။", warning_text: "OEM ဈေးပေါတာတွေကိုရှောင်ပါ။", privacy_note: "ကိုယ်ရေးကိုယ်တာ- ဒေတာစုဆောင်းခြင်းမရှိပါ။", ph_name: "နာမည်...", btn_go: "ရှေ့သို့ ✨", title_menu: "အချိန်ရွေးပါ", ph_type: "ဒီမှာရိုက်ပါ...", title_result: "ပြီးပါပြီ!", btn_retry: "ပြန်လုပ်ပါ" },
-        jp: { title_login: "ログイン", tips_text: "店でキーボードを買おう！", warning_text: "安いOEMは避けて！", privacy_note: "プライバシー：データ収集なし。", ph_name: "お名前...", btn_go: "次へ ✨", title_menu: "時間選択", ph_type: "入力...", title_result: "終了！", btn_retry: "戻る" }
+        ms: { title_login: "Sistem Login", tips_text: "Gunakan keyboard mekanikal!", privacy_note: "Data tidak dikumpul.", ph_name: "Nama...", btn_go: "Lanjut", title_menu: "Pilih Masa", ph_type: "Mula menaip...", title_result: "Tamat!", btn_retry: "Cuba Lagi" },
+        en: { title_login: "Login System", tips_text: "Mechanical is better!", privacy_note: "No data collected.", ph_name: "Name...", btn_go: "Next", title_menu: "Select Time", ph_type: "Start typing...", title_result: "Finished!", btn_retry: "Retry" },
+        id: { title_login: "Sistem Login", tips_text: "Keyboard mekanik mantap!", privacy_note: "Data aman.", ph_name: "Nama...", btn_go: "Lanjut", title_menu: "Pilih Waktu", ph_type: "Mulai mengetik...", title_result: "Selesai!", btn_retry: "Ulangi" },
+        cn: { title_login: "登录系统", tips_text: "机械键盘更好！", privacy_note: "不收集数据。", ph_name: "姓名...", btn_go: "进入", title_menu: "选择时间", ph_type: "在此输入...", title_result: "完成！", btn_retry: "重试" },
+        jp: { title_login: "ログイン", tips_text: "メカニカル推奨！", privacy_note: "収集なし。", ph_name: "名前...", btn_go: "次へ", title_menu: "時間選択", ph_type: "入力...", title_result: "終了！", btn_retry: "戻る" },
+        th: { title_login: "ระบบล็อกอิน", tips_text: "คีย์บอร์ดกลไกดีกว่า!", privacy_note: "ไม่เก็บข้อมูล.", ph_name: "ชื่อ...", btn_go: "ต่อไป", title_menu: "เลือกเวลา", ph_type: "เริ่มพิมพ์...", title_result: "เสร็จสิ้น!", btn_retry: "ลองใหม่" },
+        vn: { title_login: "Đăng nhập", tips_text: "Bàn phím cơ tốt hơn!", privacy_note: "Không thu thập dữ liệu.", ph_name: "Tên...", btn_go: "Tiếp tục", title_menu: "Chọn thời gian", ph_type: "Bắt đầu gõ...", title_result: "Kết thúc!", btn_retry: "Thử lại" },
+        lao: { title_login: "ລະບົບເຂົ້າສູ່ລະບົບ", tips_text: "ຄີບອດດີກວ່າ!", privacy_note: "ບໍ່ມີການເກັບຂໍ້ມູນ.", ph_name: "ຊື່...", btn_go: "ຕໍ່ໄປ", title_menu: "ເລືອກເວລາ", ph_type: "ເລີ່ມພິມ...", title_result: "ສໍາເລັດ!", btn_retry: "ລອງໃຫມ່" },
+        mm: { title_login: "အကောင့်ဝင်ခြင်း", tips_text: "ကီးဘုတ်သုံးပါ။", privacy_note: "ဒေတာမယူပါ။", ph_name: "နာမည်...", btn_go: "ရှေ့သို့", title_menu: "အချိန်ရွေးပါ", ph_type: "စာရိုက်ပါ...", title_result: "ပြီးပါပြီ!", btn_retry: "ပြန်လုပ်ပါ" }
     };
 
-    let curLang = 'ms', timer, timeLeft, totalTime, active = false, userName = "";
+    const sampleTexts = {
+        ms: ["Kucing melompat tinggi.", "Saya suka makan nasi lemak.", "Menaip laju memerlukan fokus."],
+        en: ["The quick brown fox jumps.", "Coding is creative and fun.", "Speed comes with practice."],
+        id: ["Saya sedang belajar koding.", "Nasi goreng pedas sekali.", "Keyboard ini sangat empuk."],
+        cn: ["努力学习，天天向上。", "机械键盘非常好用。", "今天是个好日子。"],
+        jp: ["こんにちは、お元気ですか。", "日本語はとても面白いです。", "富士山は綺麗です。"],
+        th: ["สวัสดีครับ ยินดีที่รู้จัก", "วันนี้อากาศแจ่มใสมาก", "การฝึกพิมพ์ทุกวันดีมาก"],
+        vn: ["Học tập là một hành trình.", "Chúc bạn một ngày tốt lành.", "Gõ phím nhanh rất có lợi."],
+        lao: ["ສະບາຍດີ ຍິນດີທີ່ຮູ້ຈັກ", "ມື້ນີ້ອາກາດດີຫຼາຍ", "ການຝຶກພິມແມ່ນດີ"],
+        mm: ["မင်္ဂလာပါ ခင်ဗျာ။", "နေကောင်းပါသလား။", "စာရိုက်လေ့ကျင့်ရအောင်။"]
+    };
+
+    let curLang = 'ms', timer, timeLeft, totalTime, active = false, currentText = "";
     const clickSound = new Audio('https://www.soundjay.com/buttons/sounds/button-16.mp3');
 
     function selectLang(l) {
-        curLang = l;
-        updateUI();
+        curLang = l; updateUI();
         document.getElementById('screen-lang').classList.add('hidden');
         document.getElementById('screen-login').classList.remove('hidden');
     }
@@ -239,9 +224,10 @@
     }
 
     function goMenu() {
-        userName = document.getElementById('in-name').value.trim();
-        if(userName) {
-            document.querySelectorAll('.display-username').forEach(el => el.innerText = userName);
+        const name = document.getElementById('in-name').value.trim();
+        if(name) {
+            if(name.toLowerCase() === 'horror') document.body.setAttribute('data-theme', 'horror');
+            document.querySelectorAll('.display-username').forEach(el => el.innerText = name);
             document.getElementById('screen-login').classList.add('hidden');
             document.getElementById('screen-menu').classList.remove('hidden');
         }
@@ -249,6 +235,9 @@
 
     function start(s) {
         timeLeft = s; totalTime = s; active = false;
+        const texts = sampleTexts[curLang] || sampleTexts['en'];
+        currentText = texts[Math.floor(Math.random() * texts.length)];
+        document.getElementById('text-display').innerText = currentText;
         document.getElementById('screen-menu').classList.add('hidden');
         document.getElementById('screen-test').classList.remove('hidden');
         document.getElementById('timer').innerText = s;
@@ -273,18 +262,23 @@
     }
 
     function calc() {
-        const val = document.getElementById('typing-box').value.trim();
-        const words = val ? val.split(/\s+/).length : 0;
+        const val = document.getElementById('typing-box').value;
+        const words = val.trim() ? val.trim().split(/\s+/).length : 0;
         const passed = totalTime - timeLeft;
-        if(passed > 0) {
-            document.getElementById('wpm').innerText = Math.round((words / passed) * 60);
-        }
+        if(passed > 0) document.getElementById('wpm').innerText = Math.round((words / passed) * 60);
+
+        let correct = 0;
+        const inputChars = val.split('');
+        inputChars.forEach((char, i) => { if(char === currentText[i]) correct++; });
+        const acc = inputChars.length > 0 ? Math.round((correct / inputChars.length) * 100) : 100;
+        document.getElementById('accuracy').innerText = acc;
     }
 
     function end() {
         clearInterval(timer);
         const wpm = document.getElementById('wpm').innerText;
-        document.getElementById('final-stats').innerText = wpm + " WPM";
+        const acc = document.getElementById('accuracy').innerText;
+        document.getElementById('final-stats').innerHTML = `${wpm} WPM<br><span style="font-size:1rem; opacity:0.7">Accuracy: ${acc}%</span>`;
         document.getElementById('screen-test').classList.add('hidden');
         document.getElementById('screen-result').classList.remove('hidden');
     }
