@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIY Keyboard Master V.1.4 - Multi-Language Fixed</title>
+    <title>DIY Keyboard Master V.1.4.0.1 - Privacy Update</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Creepster&family=Kosugi+Maru&family=JetBrains+Mono&family=Noto+Sans+JP&family=Noto+Sans+Thai&family=Noto+Sans+Lao&family=Noto+Sans+Myanmar&display=swap');
@@ -129,6 +129,14 @@
 
         .hidden { display: none; }
         .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        
+        .privacy-badge {
+            color: #2d6a4f;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
     </style>
 </head>
 <body data-theme="kawaii">
@@ -157,8 +165,10 @@
         <h2 data-tag="title_login"></h2>
         <div class="info-box">
             <div><i class="fa-solid fa-lightbulb"></i> <strong>Tips:</strong> <span data-tag="tips_text"></span></div>
-            <hr style="opacity: 0.2; margin: 10px 0;">
+            <hr style="opacity: 0.1; margin: 8px 0;">
             <div><i class="fa-solid fa-triangle-exclamation"></i> <span data-tag="warning_text"></span></div>
+            <hr style="opacity: 0.1; margin: 8px 0;">
+            <div class="privacy-badge"><i class="fa-solid fa-shield-halved"></i> <span data-tag="privacy_note"></span></div>
         </div>
         <input type="text" id="in-name" style="width:100%; padding:12px; border-radius:15px; border:3px solid var(--secondary); margin-bottom:15px; box-sizing: border-box;" data-placeholder="ph_name">
         <button class="btn-main" onclick="goMenu()"><span data-tag="btn_go"></span></button>
@@ -198,18 +208,18 @@
 
 <script>
     const langData = {
-        ms: { title_login: "Sistem Login", tips_text: "Beli keyboard di kedai terdekat untuk lebih laju!", warning_text: "Jangan beli OEM murah, tak tahan main game!", ph_name: "Nama anda...", btn_go: "Lanjut ✨", title_menu: "Pilih Masa", ph_type: "Mula menaip...", title_result: "Tamat!", btn_retry: "Semula" },
-        en: { title_login: "Login System", tips_text: "Buy a keyboard at a local store for speed!", warning_text: "Avoid cheap OEM, bad for gaming!", ph_name: "Your name...", btn_go: "Next ✨", title_menu: "Select Time", ph_type: "Type here...", title_result: "Finished!", btn_retry: "Retry" },
-        en_au: { title_login: "G'day Mate!", tips_text: "Grab a proper keyboard from the shop to type faster!", warning_text: "Don't buy cheap OEM junk, it won't last gaming!", ph_name: "Your name...", btn_go: "Go ✨", title_menu: "Pick a Time", ph_type: "Start typing...", title_result: "Done!", btn_retry: "Again" },
-        id: { title_login: "Sistem Login", tips_text: "Beli keyboard di toko terdekat biar lebih cepat!", warning_text: "Jangan beli OEM murah, gak awet buat game!", ph_name: "Nama kamu...", btn_go: "Lanjut ✨", title_menu: "Pilih Waktu", ph_type: "Ketik di sini...", title_result: "Selesai!", btn_retry: "Kembali" },
-        cn: { title_login: "登录系统", tips_text: "想要更快？去店里买个好键盘！", warning_text: "别买廉价OEM键盘，玩游戏不耐用！", ph_name: "名字...", btn_go: "进入 ✨", title_menu: "选择时间", ph_type: "在此输入...", title_result: "完成！", btn_retry: "重试" },
-        in: { title_login: "लॉगिन", tips_text: "तेज़ टाइपिंग के लिए पास की दुकान से कीबोर्ड खरीदें!", warning_text: "सस्ते OEM कीबोर्ड न खरीदें, गेमिंग के लिए खराब!", ph_name: "आपका नाम...", btn_go: "आगे ✨", title_menu: "समय चुनें", ph_type: "यहाँ लिखें...", title_result: "समाप्त!", btn_retry: "फिर से" },
-        de: { title_login: "Anmeldung", tips_text: "Kauf eine Tastatur im Laden, um schneller zu tippen!", warning_text: "Kein billiges OEM kaufen, schlecht für Gaming!", ph_name: "Dein Name...", btn_go: "Weiter ✨", title_menu: "Zeit wählen", ph_type: "Hier tippen...", title_result: "Fertig!", btn_retry: "Nochmal" },
-        ph: { title_login: "Login", tips_text: "Bumili ng keyboard sa malapit para bumilis!", warning_text: "Iwasan ang murang OEM, hindi ito pang-gaming!", ph_name: "Pangalan...", btn_go: "Simulan ✨", title_menu: "Pumili ng Oras", ph_type: "Mag-type dito...", title_result: "Tapos!", btn_retry: "Ulitin" },
-        th: { title_login: "เข้าสู่ระบบ", tips_text: "อยากพิมพ์เร็ว? ซื้อคีย์บอร์ดที่ร้านใกล้บ้าน!", warning_text: "อย่าซื้อ OEM ราคาถูก ไม่ทนสำหรับเล่นเกม!", ph_name: "ชื่อของคุณ...", btn_go: "ถัดไป ✨", title_menu: "เลือกเวลา", ph_type: "พิมพ์ที่นี่...", title_result: "เสร็จสิ้น!", btn_retry: "ลองใหม่" },
-        la: { title_login: "ເຂົ້າສູ່ລະບົບ", tips_text: "ຢາກພິມໄວ? ຊື້ຄີບອດຢູ່ຮ້ານໃກ້ບ້ານ!", warning_text: "ຢ່າຊື້ OEM ລາຄາຖືກ, ບໍ່ທົນທານສໍາລັບການຫຼິ້ນເກມ!", ph_name: "ຊື່ຂອງທ່ານ...", btn_go: "ເລີ່ມ ✨", title_menu: "ເລືອກເວລາ", ph_type: "ພິມຢູ່ນີ້...", title_result: "ສຳເລັດ!", btn_retry: "ລອງໃໝ່" },
-        mm: { title_login: "အကောင့်ဝင်ပါ", tips_text: "မြန်မြန်ရိုက်ချင်ရင် ဆိုင်မှာကီးဘုတ်အကောင်းစားဝယ်ပါ။", warning_text: "ဈေးပေါတဲ့ OEM တွေကိုရှောင်ပါ၊ ဂိမ်းဆော့ရင်မခံပါဘူး။", ph_name: "နာမည်...", btn_go: "ရှေ့သို့ ✨", title_menu: "အချိန်ရွေးပါ", ph_type: "ဒီမှာရိုက်ပါ...", title_result: "ပြီးပါပြီ!", btn_retry: "ပြန်လုပ်ပါ" },
-        jp: { title_login: "ログイン", tips_text: "速く打ちたい？店でキーボードを買おう！", warning_text: "安いOEMは避けて。ゲームには向きません！", ph_name: "お名前...", btn_go: "次へ ✨", title_menu: "時間選択", ph_type: "入力...", title_result: "終了！", btn_retry: "戻る" }
+        ms: { title_login: "Sistem Login", tips_text: "Beli keyboard di kedai terdekat untuk lebih laju!", warning_text: "Jangan beli OEM murah, tak tahan main game!", privacy_note: "Privasi: Kami tidak kumpul data anda.", ph_name: "Nama anda...", btn_go: "Lanjut ✨", title_menu: "Pilih Masa", ph_type: "Mula menaip...", title_result: "Tamat!", btn_retry: "Semula" },
+        en: { title_login: "Login System", tips_text: "Buy a keyboard at a local store for speed!", warning_text: "Avoid cheap OEM, bad for gaming!", privacy_note: "Privacy: We don't collect your data.", ph_name: "Your name...", btn_go: "Next ✨", title_menu: "Select Time", ph_type: "Type here...", title_result: "Finished!", btn_retry: "Retry" },
+        en_au: { title_login: "G'day Mate!", tips_text: "Grab a proper keyboard for speed!", warning_text: "Don't buy cheap junk!", privacy_note: "Privacy: No data collected, mate!", ph_name: "Your name...", btn_go: "Go ✨", title_menu: "Pick a Time", ph_type: "Start typing...", title_result: "Done!", btn_retry: "Again" },
+        id: { title_login: "Sistem Login", tips_text: "Beli keyboard di toko terdekat biar cepat!", warning_text: "Jangan beli OEM murah!", privacy_note: "Privasi: Kami tidak ambil data Anda.", ph_name: "Nama kamu...", btn_go: "Lanjut ✨", title_menu: "Pilih Waktu", ph_type: "Ketik di sini...", title_result: "Selesai!", btn_retry: "Kembali" },
+        cn: { title_login: "登录系统", tips_text: "想要更快？去店里买个好键盘！", warning_text: "别买廉价OEM键盘！", privacy_note: "隐私：我们不会收集您的数据。", ph_name: "名字...", btn_go: "进入 ✨", title_menu: "选择时间", ph_type: "在此输入...", title_result: "完成！", btn_retry: "重试" },
+        in: { title_login: "लॉगिन", tips_text: "तेज़ टाइपिंग के लिए कीबोर्ड खरीदें!", warning_text: "सस्ते OEM से बचें!", privacy_note: "गोपनीयता: हम डेटा एकत्र नहीं करते।", ph_name: "आपका नाम...", btn_go: "आगे ✨", title_menu: "समय चुनें", ph_type: "यहाँ लिखें...", title_result: "समाप्त!", btn_retry: "फिर से" },
+        de: { title_login: "Anmeldung", tips_text: "Kauf eine Tastatur im Laden!", warning_text: "Kein billiges OEM kaufen!", privacy_note: "Datenschutz: Keine Datenspeicherung.", ph_name: "Dein Name...", btn_go: "Weiter ✨", title_menu: "Zeit wählen", ph_type: "Hier tippen...", title_result: "Fertig!", btn_retry: "Nochmal" },
+        ph: { title_login: "Login", tips_text: "Bumili ng keyboard sa malapit!", warning_text: "Iwasan ang murang OEM!", privacy_note: "Privacy: Hindi kami nag-iipon ng data.", ph_name: "Pangalan...", btn_go: "Simulan ✨", title_menu: "Pumili ng Oras", ph_type: "Mag-type dito...", title_result: "Tapos!", btn_retry: "Ulitin" },
+        th: { title_login: "เข้าสู่ระบบ", tips_text: "ซื้อคีย์บอร์ดที่ร้านใกล้บ้าน!", warning_text: "อย่าซื้อ OEM ราคาถูก!", privacy_note: "ความเป็นส่วนตัว: เราไม่เก็บข้อมูล", ph_name: "ชื่อของคุณ...", btn_go: "ถัดไป ✨", title_menu: "เลือกเวลา", ph_type: "พิมพ์ที่นี่...", title_result: "เสร็จสิ้น!", btn_retry: "ลองใหม่" },
+        la: { title_login: "ເຂົ້າສູ່ລະບົບ", tips_text: "ຊື້ຄີບອດຢູ່ຮ້ານໃກ້ບ້ານ!", warning_text: "ຢ່າຊື້ OEM ລາຄາຖືກ!", privacy_note: "ຄວາມເປັນສ່ວນຕົວ: ພວກເຮົາບໍ່ເກັບກຳຂໍ້ມູນ", ph_name: "ຊື່ຂອງທ່ານ...", btn_go: "ເລີ່ມ ✨", title_menu: "ເລືອກເວລາ", ph_type: "ພິມຢູ່ນີ້...", title_result: "ສຳເລັດ!", btn_retry: "ລອງໃໝ່" },
+        mm: { title_login: "အကောင့်ဝင်ပါ", tips_text: "ဆိုင်မှာကီးဘုတ်အကောင်းစားဝယ်ပါ။", warning_text: "OEM ဈေးပေါတာတွေကိုရှောင်ပါ။", privacy_note: "ကိုယ်ရေးကိုယ်တာ- ဒေတာစုဆောင်းခြင်းမရှိပါ။", ph_name: "နာမည်...", btn_go: "ရှေ့သို့ ✨", title_menu: "အချိန်ရွေးပါ", ph_type: "ဒီမှာရိုက်ပါ...", title_result: "ပြီးပါပြီ!", btn_retry: "ပြန်လုပ်ပါ" },
+        jp: { title_login: "ログイン", tips_text: "店でキーボードを買おう！", warning_text: "安いOEMは避けて！", privacy_note: "プライバシー：データ収集なし。", ph_name: "お名前...", btn_go: "次へ ✨", title_menu: "時間選択", ph_type: "入力...", title_result: "終了！", btn_retry: "戻る" }
     };
 
     let curLang = 'ms', timer, timeLeft, totalTime, active = false, userName = "";
