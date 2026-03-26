@@ -1,6 +1,6 @@
 # ⌨️ DIY Keyboard Master V.1.4.0.2 - Global Expansion 🌍
 
-**Keyboard Master V.1.4** adalah aplikasi web penguji kecepatan mengetik (Typing Tester) interaktif yang dirancang dengan antarmuka yang lucu, modern, dan mendukung multibahasa secara global! 🚀
+**Keyboard Master V.1.4.0.2** adalah aplikasi web penguji kecepatan mengetik (Typing Tester) interaktif yang dirancang dengan antarmuka yang lucu, modern, dan mendukung multibahasa secara global! 🚀
 
 ### ✨ Fitur Utama:
 * **🌍 Dukungan 12 Bahasa:** Pilih bahasa favoritmu sebelum memulai, termasuk:
